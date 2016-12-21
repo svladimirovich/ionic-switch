@@ -45,17 +45,9 @@ angular.module('starter.controllers', [])
 
   $scope.deviceList = [];
 
-  $scope.switchOn = function(deviceId) {
-    $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/on`).success(result => {
-      $scope.deviceList = eval(result);    
-    }).error((data, status) => {});
-  };
-
-  $scope.switchOff = function(deviceId) {
-    $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/off`).success(result => {
-      $scope.deviceList = eval(result);    
-    }).error((data, status) => {});
-  };
+  $scope.toggle = function(deviceId, isOnline) {
+    $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/${isOnline}`).success(result => {}).error((data, status) => {});
+  }
 
   $http.get(appConfiguration.apiUrl + "/list")
   .success(result => {
