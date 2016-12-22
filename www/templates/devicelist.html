@@ -1,21 +1,9 @@
 <ion-view view-title="Access To Internet">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="device in deviceList" href="#">
-          <span style="float:left;"> {{ device.name }}</span>
-          <span style="float:right;">
-            <input bs-switch
-              ng-model="device.online"
-              type="checkbox"
-              switch-active="true"
-              ng-true-value="'on'"
-              ng-false-value="'off'"
-              switch-readonly="false"
-              ng-change="toggle(device.id, device.online)"
-              switch-on-color="success"
-              switch-off-color="danger" />
-          </span>
-      </ion-item>
+        <ion-toggle ng-model="device.online" ng-true-value="'on'" ng-false-value="'off'"  ng-repeat="device in deviceList" ng-change="toggleDevice(device.id, device.online)">
+          {{ device.name }}
+        </ion-toggle>
     </ion-list>
   </ion-content>
 </ion-view>

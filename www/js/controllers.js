@@ -45,9 +45,9 @@ angular.module('starter.controllers', [])
 
   $scope.deviceList = [];
 
-  $scope.toggle = function(deviceId, isOnline) {
+  $scope.toggleDevice = function(deviceId, isOnline) {
     $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/${isOnline}`).success(result => {}).error((data, status) => {});
-  }
+  };
 
   $http.get(appConfiguration.apiUrl + "/list")
   .success(result => {
