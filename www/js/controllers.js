@@ -41,16 +41,27 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+.controller('deviceListController', function($scope, $http, appConfiguration) {
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+  $scope.deviceList = [];
+
+  $scope.switchOn = function(deviceId) {
+    $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/on`).success(result => {
+      $scope.deviceList = eval(result);    
+    }).error((data, status) => {});
+  };
+
+  $scope.switchOff = function(deviceId) {
+    $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/off`).success(result => {
+      $scope.deviceList = eval(result);    
+    }).error((data, status) => {});
+  };
+
+  $http.get(appConfiguration.apiUrl + "/list")
+  .success(result => {
+    $scope.deviceList = eval(result);    
+  })
+  .error((data, status) => {
+    // TODO: display some error message
+  });
 });

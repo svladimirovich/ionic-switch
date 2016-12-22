@@ -1,0 +1,14 @@
+<ion-view view-title="Access To Internet">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="device in deviceList" href="#">
+          <span style="float:left;"> {{ device.name }}</span>
+          <span style="float:right;">
+              <input type="radio" name="{{ 'deviceSwitch' + device.id }}" ng-model="device.online" ng-change="switchOn(device.id)" value="on">on</input>
+              <input type="radio" name="{{ 'deviceSwitch' + device.id }}" ng-model="device.online" value="null" style="display:none;"></input>
+              <input type="radio" name="{{ 'deviceSwitch' + device.id }}" ng-model="device.online" ng-change="switchOff(device.id)" value="off">off</input>
+          </span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
