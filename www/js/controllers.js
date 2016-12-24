@@ -49,11 +49,23 @@ angular.module('starter.controllers', [])
     $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/${isOnline}`).success(result => {}).error((data, status) => {});
   };
 
-  $http.get(appConfiguration.apiUrl + "/list")
+  var requestConfig = {
+    method: 'GET',
+    url: "" + appConfiguration.apiUrl + "/list",
+    headers: {
+      //"Authorization": "Basic bG9zZXI6cGFzc3dvcmQ=",
+      //"Referer": "http://192.168.0.1/userRpm/AccessCtrlAccessRulesRpm.htm?Page=1",
+      //"Referer": "http://192.168.1.78/userRpm/AccessCtrlAccessRulesRpm.htm?Page=1",
+      //"Upgrade-Insecure-Requests": "1",
+      //"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+    }
+  };
+
+  $http.get(requestConfig.url, requestConfig)
   .success(result => {
     $scope.deviceList = eval(result);    
   })
-  .error((data, status) => {
+  .error((error, status) => {
     // TODO: display some error message
   });
 });

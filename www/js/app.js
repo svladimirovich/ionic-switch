@@ -6,7 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 .constant("appConfiguration", {
-  apiUrl: 'http://localhost/api'
+  //apiUrl: 'http://localhost/api'
+  apiUrl: 'http://192.168.1.78/api'
 })
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
