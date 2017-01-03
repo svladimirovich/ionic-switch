@@ -48,7 +48,7 @@ http.createServer(function(request, response) {
 
     function yieldError(message, response, code = 500) {
         response.writeHead(code);
-        response.write("err" + message, "utf8");
+        response.write("Error: " + message, "utf8");
         response.end();
     }
     
@@ -103,5 +103,6 @@ http.createServer(function(request, response) {
     console.log("<<<<<<<<<<<<<<<<<<<<<<<<");
     console.log(new Date() + " response served.");
 }).listen(80, '127.0.0.1');
+//}).listen(8080, '192.168.0.105');
 
 console.log("lilserver started. (Ctrl+C to quit)");

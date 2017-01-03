@@ -44,6 +44,7 @@ angular.module('starter.controllers', [])
 .controller('deviceListController', function($scope, $http, appConfiguration) {
 
   $scope.deviceList = [];
+  $scope.responseText = "";
 
   $scope.toggleDevice = function(deviceId, isOnline) {
     $http.get(`${appConfiguration.apiUrl}/set/${deviceId}/${isOnline}`).success(result => {}).error((data, status) => {});
@@ -52,11 +53,14 @@ angular.module('starter.controllers', [])
   var requestConfig = {
     method: 'GET',
     url: "" + appConfiguration.apiUrl + "/list",
+    //url: "http://192.168.0.1/userRpm/AccessCtrlAccessRulesRpm.htm", //appConfiguration.apiUrl,
+    //url: "http://192.168.0.105:8080/userRpm/AccessCtrlAccessRulesRpm.htm", //appConfiguration.apiUrl,
     headers: {
+      //"Accept": "*/*",
       //"Authorization": "Basic bG9zZXI6cGFzc3dvcmQ=",
-      //"Referer": "http://192.168.0.1/userRpm/AccessCtrlAccessRulesRpm.htm?Page=1",
-      //"Referer": "http://192.168.1.78/userRpm/AccessCtrlAccessRulesRpm.htm?Page=1",
       //"Upgrade-Insecure-Requests": "1",
+      //"Referer": "http://192.168.0.1/userRpm/AccessCtrlAccessRulesRpm.htm?Page=1",
+      //"Referer": "http://192.168.0.1/userRpm/MenuRpm.htm",
       //"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
     }
   };
@@ -68,4 +72,38 @@ angular.module('starter.controllers', [])
   .error((error, status) => {
     // TODO: display some error message
   });
+  // var myrequest = new XMLHttpRequest();
+  // myrequest.onreadystatechange = function() {
+  //   $scope.apply(function() {
+      
+  //   });
+  // }
+  // myrequest.open("GET", "http://192.168.0.105:8080/userRpm/AccessCtrlAccessRulesRpm.htm", true);
+  // myrequest.setRequestHeader("referer", "http://192.168.0.1/userRpm/MenuRpm.htm");
+  // myrequest.send();
+
+  // $http.get("http://192.168.0.1/", {
+  //   headers: {
+  //     "Upgrade-Insecure-Requests": "1",
+  //     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"      
+  //   }
+  // })
+  // .success(result => {
+  //   $scope.responseText = `result5: ${result}`;
+  //   //$scope.deviceList = eval(result);    
+  // })
+  // .error((error, status) => {
+  //   $scope.responseText = "there was an error: ";
+  //   // TODO: display some error message
+  // });
+
+  // $http.get(requestConfig.url, requestConfig)
+  // .success(result => {
+  //   $scope.responseText = `result5: ${result}`;
+  //   //$scope.deviceList = eval(result);    
+  // })
+  // .error((error, status) => {
+  //   $scope.responseText = "there was an error: ";
+  //   // TODO: display some error message
+  // });
 });
