@@ -96,6 +96,11 @@ http.createServer(function(request, response) {
         });    
     }
 
+    console.log(">>> Listing Headers: >>>");
+    for(var header in request.headers) {
+        console.log(`${header}: ${request.headers[header]}`);
+    }
+    console.log("<<<<<<<<<<<<<<<<<<<<<<<<");
     console.log(new Date() + " response served.");
 }).listen(80, '127.0.0.1');
 
